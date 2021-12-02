@@ -1,0 +1,53 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Encrypt-Decrypt-Service",
+		"_postman_id": "f2b537b3-3535-0f51-d832-b8332dc1db25",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Find all Encrypted Messages",
+			"request": {
+				"url": "http://localhost:8082/encryptmsgs",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Find Encrypted Message By Id",
+			"request": {
+				"url": "http://localhost:8082/encryptmsgs/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Encrypted Message",
+			"request": {
+				"url": "http://localhost:8082/encryptmsgs",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \n    \"message\": \"test msg\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
