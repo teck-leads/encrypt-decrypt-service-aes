@@ -43,7 +43,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n   \n    \"message\": \"test msg\"\n}"
+					"raw": "{\n   \n    \"message\": \"test\"\n}"
 				},
 				"description": ""
 			},
@@ -52,7 +52,7 @@
 		{
 			"name": "Decrypted Message",
 			"request": {
-				"url": "http://localhost:8082/encryptmsgs",
+				"url": "http://localhost:8082/decryptmsgs",
 				"method": "POST",
 				"header": [
 					{
@@ -63,8 +63,19 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n   \n    \"message\": \"teja\"\n}"
+					"raw": "{\n        \"id\": 101,\n        \"encryptedMessage\": \"906sao0rOacrnxhJ5vg/ow==\"\n}"
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Encrypted Message By Id",
+			"request": {
+				"url": "http://localhost:8082/encryptmsgs/102",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
 				"description": ""
 			},
 			"response": []
