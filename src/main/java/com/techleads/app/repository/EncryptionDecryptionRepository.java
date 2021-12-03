@@ -54,9 +54,15 @@ public class EncryptionDecryptionRepository {
 
 	}
 	
-	public int deleteById(Integer id) {
+	public int deleteMasterTableById(Integer id) {
 		Object[] params = {id};
 		int count = jdbcTemplate.update(DBQueries.DELETE_ENCRYPTED_TAB_BY_ID, params);
+		return count;
+	}
+	
+	public int deleteChildTableById(Integer id) {
+		Object[] params = {id};
+		int count = jdbcTemplate.update(DBQueries.DELETE_DECRYPTED_TAB_BY_ID, params);
 		return count;
 	}
 	
