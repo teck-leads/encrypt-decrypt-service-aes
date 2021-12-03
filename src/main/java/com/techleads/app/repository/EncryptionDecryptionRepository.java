@@ -40,7 +40,7 @@ public class EncryptionDecryptionRepository {
 	
 	public EncryptDecryptData findById(Integer id) {
 		Object[] params = { id };
-		EncryptDecryptData encryptData = jdbcTemplate.query(DBQueries.SELECT_MSGS_BY_ID, new ExtractEncryptDataById(), params);
+		EncryptDecryptData encryptData = jdbcTemplate.query(DBQueries.SELECT_MSGS_BY_ID, new ExtractEncryptDataById(false), params);
 		
 		return encryptData;
 
@@ -48,7 +48,7 @@ public class EncryptionDecryptionRepository {
 	
 	public EncryptDecryptData findMaxId() {
 		Object[] params = {  };
-		EncryptDecryptData encryptData = jdbcTemplate.query(DBQueries.SELECT_MSGS_BY_MAX_ID, new ExtractEncryptDataById(), params);
+		EncryptDecryptData encryptData = jdbcTemplate.query(DBQueries.SELECT_MSGS_BY_MAX_ID, new ExtractEncryptDataById(false), params);
 		
 		return encryptData;
 
@@ -59,6 +59,15 @@ public class EncryptionDecryptionRepository {
 		int count = jdbcTemplate.update(DBQueries.DELETE_ENCRYPTED_TAB_BY_ID, params);
 		return count;
 	}
+	
+	public EncryptDecryptData findDecryptedMessageByIdAndEncryptMsg(EncryptDecryptData encryptData) {
+		Object[] params = { encryptData.getId(), encryptData.getEncryptedMessage() };
+		EncryptDecryptData decryptedMessages = jdbcTemplate.query(DBQueries.SELECT_DECRYPT_MSG_BY_ENCRYPT_AND_ID, new ExtractEncryptDataById(true), params);
+		
+		return decryptedMessages;
+
+	}
+
 	
 	
 

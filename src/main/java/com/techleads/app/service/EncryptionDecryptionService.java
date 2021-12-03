@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.techleads.app.aes.EncryptDecryptUtility;
+import com.techleads.app.common.DBQueries;
 import com.techleads.app.model.EncryptDecryptData;
 import com.techleads.app.repository.EncryptionDecryptionRepository;
+import com.techleads.app.repository.ExtractEncryptDataById;
 
 @Service
 public class EncryptionDecryptionService {
@@ -46,6 +48,7 @@ public class EncryptionDecryptionService {
 		return findById;
 
 	}
+	
 
 	public String deleteById(Integer id) {
 		int count = encryptionDecryptionRepository.deleteById(id);
@@ -55,5 +58,11 @@ public class EncryptionDecryptionService {
 		}
 		return "Not Deleted the message with id " + id;
 	}
+	
+	public EncryptDecryptData findDecryptedMessageByIdAndEncryptMsg(EncryptDecryptData encryptData) {
+		EncryptDecryptData decryptedMessage = encryptionDecryptionRepository.findDecryptedMessageByIdAndEncryptMsg(encryptData);
+		return decryptedMessage;
+	}
+
 
 }

@@ -9,6 +9,12 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import com.techleads.app.model.EncryptDecryptData;
 
 public class ExtractEncryptDataById implements ResultSetExtractor<EncryptDecryptData> {
+	private boolean decryptMsg;
+
+	public ExtractEncryptDataById(boolean decryptMsg) {
+		this.decryptMsg = decryptMsg;
+	}
+
 	EncryptDecryptData encryptData = new EncryptDecryptData();
 
 	@Override
@@ -16,6 +22,9 @@ public class ExtractEncryptDataById implements ResultSetExtractor<EncryptDecrypt
 		while (rs.next()) {
 			encryptData.setId(rs.getInt("ENCRP_ID"));
 			encryptData.setEncryptedMessage(rs.getString("ENCRYPTED_MSG"));
+			if (decryptMsg) {
+				encryptData.setDecryptedMessage(rs.getString("DECRYPTED_MSG"));
+			}
 
 		}
 		return encryptData;

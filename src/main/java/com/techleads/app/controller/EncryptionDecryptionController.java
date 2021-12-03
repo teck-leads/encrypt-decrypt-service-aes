@@ -35,5 +35,11 @@ public class EncryptionDecryptionController {
 		return findById;
 
 	}
+	@PostMapping(value = {"/decryptmsgs"})
+	public EncryptDecryptData findDecryptedMessageByIdAndEncryptMsg(@RequestBody EncryptDecryptData encryptData) {
+		EncryptDecryptData decryptedMessage = encryptionDecryptionService.findDecryptedMessageByIdAndEncryptMsg(encryptData);
+		return decryptedMessage;
+	}
+
 
 }
