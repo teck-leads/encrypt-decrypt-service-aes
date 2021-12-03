@@ -31,10 +31,11 @@ public class EncryptionDecryptionService {
 		if (count > 0) {
 			EncryptDecryptData encryptedMessage = encryptionDecryptionRepository.findMaxId();
 			//Decrypting message and saving it in Decrypt table
-//			String plainTextMsg = EncryptDecryptUtility.decryptPlainTextMsg(encryptedMsg);
-//			encryptedMessage.setDecryptedMessage(encryptedMsg);
+			String plainTextMsg = EncryptDecryptUtility.decryptPlainTextMsg(encryptedMsg);
+			encryptedMessage.setDecryptedMessage(plainTextMsg);
 			encryptionDecryptionRepository.saveDecryptedMessage(encryptedMessage);
-
+			
+			encryptedMessage.setDecryptedMessage(null);
 			return encryptedMessage;
 		}
 		return new EncryptDecryptData();

@@ -23,7 +23,7 @@ public class EncryptionDecryptionRepository {
 	}
 	
 	public int saveDecryptedMessage(EncryptDecryptData encryptData) {
-		Object[] params = {encryptData.getEncryptedMessage(), encryptData.getId()};
+		Object[] params = {encryptData.getDecryptedMessage(), encryptData.getId()};
 		int count = jdbcTemplate.update(DBQueries.INSERT_INTO_DECRYPTED_TAB, params);
 		return count;
 	}

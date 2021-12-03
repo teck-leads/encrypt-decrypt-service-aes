@@ -12,13 +12,12 @@ import javax.crypto.spec.IvParameterSpec;
 
 public class EncryptDecryptUtility {
 	private static final String ALGORITHM = "AES/CBC/PKCS5Padding";
+	private static SecretKey key = AESUtil.generateKey(128);
+	private static IvParameterSpec ivParameterSpec = AESUtil.generateIv();
 
 	public static String encryptPlainTextMsg(String plainTextMsg) {
 		String cipherText = null;
 		try {
-			SecretKey key = AESUtil.generateKey(128);
-			IvParameterSpec ivParameterSpec = AESUtil.generateIv();
-
 			cipherText = AESUtil.encrypt(ALGORITHM, plainTextMsg, key, ivParameterSpec);
 		} catch (InvalidKeyException e) {
 			e.printStackTrace();
@@ -41,9 +40,6 @@ public class EncryptDecryptUtility {
 	public static String decryptPlainTextMsg(String enctryptedTextMsg) {
 		String plainText = null;
 		try {
-			SecretKey key = AESUtil.generateKey(128);
-			IvParameterSpec ivParameterSpec = AESUtil.generateIv();
-
 			plainText = AESUtil.decrypt(ALGORITHM, enctryptedTextMsg, key, ivParameterSpec);
 		} catch (InvalidKeyException e) {
 			e.printStackTrace();
